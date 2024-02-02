@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -37,6 +38,7 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.6"
@@ -53,6 +55,8 @@ android {
 }
 
 dependencies {
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     val nav_version = "2.7.6"
 
     implementation(platform("androidx.compose:compose-bom:2023.04.01"))
@@ -101,11 +105,30 @@ dependencies {
     implementation("com.airbnb.android:lottie-compose:5.2.0")
     implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.6")
     implementation("io.coil-kt:coil-compose:2.4.0")
+    //permission
+    implementation("com.google.accompanist:accompanist-permissions:0.17.0")
 
     //Test
     implementation("io.mockk:mockk:1.13.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
     implementation("com.google.truth:truth:1.1.3")
+
+    //ML Kit
+    implementation("com.google.mlkit:face-detection:16.1.5")
+    implementation("com.google.android.gms:play-services-mlkit-face-detection:17.1.0")
+
+    //CAMERAX
+    val camerax_version = "1.2.2"
+    implementation("androidx.camera:camera-core:${camerax_version}")
+    implementation("androidx.camera:camera-camera2:${camerax_version}")
+    implementation("androidx.camera:camera-lifecycle:${camerax_version}")
+    implementation("androidx.camera:camera-view:${camerax_version}")
+
+    /* TensorFlow Lite */
+    implementation("org.tensorflow:tensorflow-lite:2.12.0")
+    implementation("org.tensorflow:tensorflow-lite-gpu:2.12.0")
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.3")
+    implementation("org.tensorflow:tensorflow-lite-task-vision:0.4.3")
 }
 
 kapt {

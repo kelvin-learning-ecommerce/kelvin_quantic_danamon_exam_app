@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.PastiSystemTest" parent="android:Theme.Material.Light.NoActionBar">
+    <style name="Theme.PastiSystemTest" parent="Theme.AppCompat.NoActionBar">
+<!--        parent="android:Theme.Material.Light.NoActionBar">-->
         <!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
         <!--        <item name="colorPrimary">@color/purple_500</item>-->
         <!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->

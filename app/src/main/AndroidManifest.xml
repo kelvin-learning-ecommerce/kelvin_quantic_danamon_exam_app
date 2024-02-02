@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -24,9 +27,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.movielist.MovieListActivity"
-            android:exported="true"/>
-        <activity android:name="com.kelvin.pastisystem.ui.moviedetail.MovieDetailActivity" />
+        <activity
+            android:name=".ui.movielist.MovieListActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.kelvin.pastisystem.ui.moviedetail.MovieDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.kelvin.pastisystem.ui.mlkit.FaceRecognitionActivity"
+            android:exported="true" />
+        <activity android:name="com.kelvin.pastisystem.ui.mlkit.MlActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PastiSystemTest"/>
+
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="face" />
     </application>
 
 </manifest>
