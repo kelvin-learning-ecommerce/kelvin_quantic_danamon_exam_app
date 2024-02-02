@@ -1,4 +1,4 @@
-package com.kelvin.pastisystem.ui.genre
+package com.kelvin.pastisystem.ui.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.kelvin.pastisystem.model.Genres
 import com.kelvin.pastisystem.ui.common.ShimmerListItem
+import com.kelvin.pastisystem.ui.home.viewmodel.HomeViewModel
 import com.kelvin.pastisystem.ui.movielist.MovieListActivity
 import com.kelvin.pastisystem.ui.theme.LearningTheme
 import dagger.hilt.android.AndroidEntryPoint

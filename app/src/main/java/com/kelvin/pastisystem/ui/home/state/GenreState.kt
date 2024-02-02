@@ -1,4 +1,4 @@
-package com.kelvin.pastisystem.ui.genre
+package com.kelvin.pastisystem.ui.home.state
 
 import com.kelvin.pastisystem.model.Genres
 

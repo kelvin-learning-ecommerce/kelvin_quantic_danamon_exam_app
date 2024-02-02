@@ -1,4 +1,4 @@
-package com.kelvin.pastisystem.ui.moviedetail
+package com.kelvin.pastisystem.ui.moviedetail.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

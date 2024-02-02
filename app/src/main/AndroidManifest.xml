@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PastiSystemTest">
         <activity
-            android:name=".ui.genre.HomePageActivity"
+            android:name=".ui.home.HomePageActivity"
             android:exported="true"
             android:theme="@style/Theme.PastiSystemTest">
             <intent-filter>

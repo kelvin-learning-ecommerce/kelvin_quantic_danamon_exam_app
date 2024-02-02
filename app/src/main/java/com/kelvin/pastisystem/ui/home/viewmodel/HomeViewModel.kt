@@ -1,10 +1,11 @@
-package com.kelvin.pastisystem.ui.genre
+package com.kelvin.pastisystem.ui.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kelvin.pastisystem.model.Genres
 import com.kelvin.pastisystem.network.Resource
 import com.kelvin.pastisystem.repositories.MovieRepository
+import com.kelvin.pastisystem.ui.home.state.GenreState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.MutableStateFlow

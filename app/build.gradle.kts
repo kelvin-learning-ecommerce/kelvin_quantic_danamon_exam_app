@@ -73,7 +73,6 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation("androidx.navigation:navigation-compose:$nav_version")
-//    implementation ("org.mongodb:mongodb-driver-kotlin:1.7.2")
     implementation("androidx.compose.foundation:foundation:1.6.0")
 
     implementation("com.jakewharton.timber:timber:5.0.1")

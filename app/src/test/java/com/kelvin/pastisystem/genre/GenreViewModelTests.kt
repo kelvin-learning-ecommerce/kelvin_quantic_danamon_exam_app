@@ -6,7 +6,7 @@ import com.kelvin.pastisystem.genre.MockData.Companion.genres
 import com.kelvin.pastisystem.genre.MockData.Companion.listOfGenre
 import com.kelvin.pastisystem.network.Resource
 import com.kelvin.pastisystem.repositories.MovieRepository
-import com.kelvin.pastisystem.ui.genre.HomeViewModel
+import com.kelvin.pastisystem.ui.home.viewmodel.HomeViewModel
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -6,7 +6,7 @@ import com.kelvin.pastisystem.model.MovieDetailModel
 import com.kelvin.pastisystem.moviedetail.MovieDetailMockData.Companion.listOfImageData
 import com.kelvin.pastisystem.moviedetail.MovieDetailMockData.Companion.movieImageDetailData
 import com.kelvin.pastisystem.repositories.MovieRepository
-import com.kelvin.pastisystem.ui.moviedetail.MovieDetailViewModel
+import com.kelvin.pastisystem.ui.moviedetail.viewmodel.MovieDetailViewModel
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest

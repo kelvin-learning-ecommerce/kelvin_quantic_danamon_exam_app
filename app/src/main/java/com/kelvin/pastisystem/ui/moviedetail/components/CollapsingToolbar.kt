@@ -34,7 +34,7 @@ import coil.request.ImageRequest
 import com.kelvin.pastisystem.model.MovieDetailModel
 import com.kelvin.pastisystem.model.Posters
 import com.kelvin.pastisystem.ui.common.findActivity
-import com.kelvin.pastisystem.ui.moviedetail.MovieDetailViewModel
+import com.kelvin.pastisystem.ui.moviedetail.viewmodel.MovieDetailViewModel
 import com.kelvin.pastisystem.ui.moviedetail.common.MovieDetailShimmerListItem
 import com.kelvin.pastisystem.utils.bigTextStyle
 import com.kelvin.pastisystem.utils.mediumTextStyle

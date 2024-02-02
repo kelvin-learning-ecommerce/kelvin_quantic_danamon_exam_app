@@ -1,4 +1,4 @@
-package com.kelvin.pastisystem.network
+package com.kelvin.pastisystem.DI
 
 import com.kelvin.pastisystem.api.MovieApi
 import com.kelvin.pastisystem.api.MovieService
