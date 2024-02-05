@@ -1,15 +1,13 @@
 package com.kelvin.pastisystem.movielist
 
-import com.kelvin.pastisystem.model.Results
+import com.kelvin.pastisystem.model.MovieUIModel
 
 class MovieMockData {
     companion object {
-        val movie = Results(
-            adult = false,
-            backdropPath = "/cnqwv5Uz3UW5f086IWbQKr3ksJr.jpg",
+        val movie = MovieUIModel(
             id = 572802,
-            originalLanguage = "en",
-            originalTitle = "Aquaman and the Lost Kingdom"
+            overview = "en",
+            title = "Aquaman and the Lost Kingdom"
         )
 
         //list of 4 coins

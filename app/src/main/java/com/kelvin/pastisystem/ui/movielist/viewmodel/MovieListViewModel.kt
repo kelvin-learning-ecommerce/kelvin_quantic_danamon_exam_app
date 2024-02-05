@@ -2,9 +2,11 @@ package com.kelvin.pastisystem.ui.movielist.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kelvin.pastisystem.model.Results
+import com.kelvin.pastisystem.model.MovieUIModel
 import com.kelvin.pastisystem.network.Resource
 import com.kelvin.pastisystem.repositories.MovieRepository
+import com.kelvin.pastisystem.repositories.RoomRepository
+import com.kelvin.pastisystem.room.model.MovieDaoModel
 import com.kelvin.pastisystem.ui.movielist.state.MovieListState
 import com.kelvin.pastisystem.ui.movielist.state.PaginationState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,7 +24,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieListViewModel @Inject constructor(
-    private val movieRepository: MovieRepository
+    private val movieRepository: MovieRepository,
+    private val roomRepository: RoomRepository
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(MovieListState())
@@ -36,6 +39,7 @@ class MovieListViewModel @Inject constructor(
 
     var page: Int = 0
     var genreId: Int = 0
+    var isFavorite: Boolean = false
 
     internal fun getMovieList() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -43,25 +47,71 @@ class MovieListViewModel @Inject constructor(
                 .distinctUntilChanged()
                 .collectLatest { result ->
                     when (result) {
-                        is Resource.Success -> result.data?.let { data -> onRequestSuccess(data) }
+                        is Resource.Success -> result.data?.let { data ->
+                            val uiData = data.map {
+                                MovieUIModel(
+                                    title = it.title,
+                                    overview = it.overview,
+                                    releaseDate = it.releaseDate,
+                                    voteAverage = it.voteAverage,
+                                    voteCount = it.voteCount,
+                                    posterPath = it.posterPath
+                                )
+                            }
+                            onRequestSuccess(uiData)
+                        }
+
                         is Resource.Error -> onRequestError(result.message)
                         is Resource.Loading -> onRequestLoading()
-                        else -> Unit
                     }
                 }
         }
     }
 
-    fun getCoinsPaginated() {
-        if (_state.value.data.isEmpty()) {
-            return
-        }
+    fun getRoomMovieList() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val data = roomRepository.getAll()
 
-        getMovieList()
+            val uiData = data.map {
+                MovieUIModel(
+                    title = it.title,
+                    overview = it.overview,
+                    releaseDate = it.releaseDate,
+                    voteAverage = it.voteAverage,
+                    voteCount = it.voteCount,
+                    posterPath = it.posterPath
+                )
+            }
+
+            onRequestSuccess(uiData)
+        }
+    }
+
+    fun insertMovie(movieData: MovieUIModel) {
+        roomRepository.insertMovie(
+            MovieDaoModel(
+                title = movieData.title,
+                overview = movieData.overview,
+                releaseDate = movieData.releaseDate,
+//                voteAverage = Integer.parseInt(movieData.voteAverage),
+                voteCount = movieData.voteCount,
+                posterPath = movieData.posterPath
+            )
+        )
+    }
+
+    fun getCoinsPaginated() {
+        if(!isFavorite) {
+            if (_state.value.data.isEmpty()) {
+                return
+            }
+
+            getMovieList()
+        }
     }
 
     internal fun onRequestSuccess(
-        data: List<Results>
+        data: List<MovieUIModel>
     ) {
         page++
 
@@ -133,7 +183,7 @@ class MovieListViewModel @Inject constructor(
 
     fun updateState(
         isLoading: Boolean = false,
-        movie: List<Results> = emptyList(),
+        movie: List<MovieUIModel> = emptyList(),
         error: String = ""
     ) {
         _state.update {

@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.kelvin.pastisystem.model.Results
+import com.kelvin.pastisystem.model.MovieUIModel
 import com.kelvin.pastisystem.ui.common.ShimmerListItem
 import com.kelvin.pastisystem.ui.movielist.viewmodel.MovieListViewModel
 import kotlinx.collections.immutable.ImmutableList
@@ -23,7 +23,7 @@ import kotlinx.collections.immutable.persistentListOf
 
 data class MovieListState(
     val isLoading: Boolean = false,
-    val data: ImmutableList<Results> = persistentListOf(),
+    val data: ImmutableList<MovieUIModel> = persistentListOf(),
     val error: String = ""
     )
 

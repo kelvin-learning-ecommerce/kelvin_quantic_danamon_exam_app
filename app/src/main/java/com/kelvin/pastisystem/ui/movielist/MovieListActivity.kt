@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.kelvin.pastisystem.model.Results
+import com.kelvin.pastisystem.model.MovieUIModel
 import com.kelvin.pastisystem.ui.movielist.components.Content
 import com.kelvin.pastisystem.ui.movielist.components.MovieListScreen
 import com.kelvin.pastisystem.ui.theme.LearningTheme
@@ -45,14 +45,16 @@ fun MovieListScreenPreview() {
         ) {
             Content(
                 data = listOf(
-                    Results(
+                    MovieUIModel(
                         title = "Test title",
                         posterPath = "/7lTnXOy0iNtBAdRP3TZvaKJ77F6.jpg",
                         voteAverage = "7",
                         releaseDate = "20-11-2010",
                         voteCount = 100
                     )
-                )
+                ),
+                onItemFav = {
+                 }
             )
         }
     }

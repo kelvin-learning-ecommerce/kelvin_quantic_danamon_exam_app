@@ -1,4 +1,4 @@
-package com.kelvin.pastisystem.DI
+package com.kelvin.pastisystem.di
 
 import com.kelvin.pastisystem.api.MovieApi
 import com.kelvin.pastisystem.api.MovieService
@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object RetrofitModule {
+object DaggerHiltModule {
 
     private const val BASE_URL = "https://api.themoviedb.org/3/"
 
@@ -52,6 +52,16 @@ object RetrofitModule {
             .build()
     }
 
+//    @Provides
+//    @ViewModelScoped
+//    fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
+//        return Room.databaseBuilder(
+//            appContext,
+//            AppDatabase::class.java,
+//            "pastisystem_demo_app_db"
+//        ).build()
+//    }
+
     // Games
     @Provides
     @ViewModelScoped
@@ -62,12 +72,18 @@ object RetrofitModule {
     @Provides
     @ViewModelScoped
     fun provideMovieService(gameApi: MovieApi): MovieService {
-        return MovieService(gameApi)  // Or however you create an instance of GameService
+        return MovieService(gameApi)
     }
 
     @Provides
     @ViewModelScoped
     fun provideMovieRepository(gameService: MovieService): MovieRepository {
-        return MovieRepositoryImpl(gameService)  // Or however you create an instance of GameRepository
+        return MovieRepositoryImpl(gameService)
     }
+
+//    @Provides
+//    @ViewModelScoped
+//    fun provideRoomRepository(appDatabase: AppDatabase): RoomRepository {
+//        return RoomRepositoryImpl(appDatabase.movieDao())
+//    }
 }

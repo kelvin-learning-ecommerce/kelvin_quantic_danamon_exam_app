@@ -12,7 +12,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.LibraryAdd
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
@@ -24,7 +27,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.kelvin.pastisystem.model.Results
+import com.kelvin.pastisystem.model.MovieUIModel
 import com.kelvin.pastisystem.utils.bigTextStyle
 import com.kelvin.pastisystem.utils.mediumTextStyle
 import com.kelvin.pastisystem.utils.smallTextStyle
@@ -32,8 +35,9 @@ import com.kelvin.pastisystem.utils.smallTextStyle
 
 @Composable
 fun MovieListItem(
-    data: Results,
-    onItemClick: (Results) -> Unit
+    data: MovieUIModel,
+    onItemClick: (MovieUIModel) -> Unit,
+    onItemFav: (MovieUIModel) -> Unit,
 ) {
     Card(
         elevation = CardDefaults.cardElevation(),
@@ -59,7 +63,7 @@ fun MovieListItem(
             Box(
                 modifier = Modifier
                     .background(Color.Transparent)
-                    .size(150.dp)
+                    .fillMaxWidth()
             ) {
 
                 AsyncImage(
@@ -74,6 +78,18 @@ fun MovieListItem(
                         .size(150.dp)
                         .align(Alignment.Center)
                 )
+
+                Icon(
+                    imageVector = Icons.Default.LibraryAdd,
+                    contentDescription = "Add to Library",
+                    modifier = Modifier
+                        .clickable {
+                            onItemFav(data)
+                        }
+                        .align(Alignment.TopEnd)
+                        .padding(15.dp)
+
+                )
             }
             Text(
                 text = data.title ?: "",
@@ -87,7 +103,8 @@ fun MovieListItem(
 
             Row(
                 Modifier
-                    .fillMaxWidth().padding(horizontal = 15.dp),
+                    .fillMaxWidth()
+                    .padding(horizontal = 15.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(

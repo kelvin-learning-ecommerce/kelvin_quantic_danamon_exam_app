@@ -5,6 +5,7 @@ import com.kelvin.pastisystem.dispatcher.MainDispatcherRule
 import com.kelvin.pastisystem.movielist.MovieMockData.Companion.listOfMovie
 import com.kelvin.pastisystem.movielist.MovieMockData.Companion.movie
 import com.kelvin.pastisystem.repositories.MovieRepository
+import com.kelvin.pastisystem.repositories.RoomRepository
 import com.kelvin.pastisystem.ui.movielist.viewmodel.MovieListViewModel
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -20,12 +21,14 @@ class MovieListViewModelTests {
     val mainDispatcherRule = MainDispatcherRule()
 
     private lateinit var movieRepository: MovieRepository
+    private lateinit var roomRepository: RoomRepository
     private lateinit var viewModel: MovieListViewModel
 
     @Before
     fun setUp() {
         movieRepository = mockk(relaxed = true)
-        viewModel = MovieListViewModel(movieRepository)
+        roomRepository = mockk(relaxed = true)
+        viewModel = MovieListViewModel(movieRepository, roomRepository)
     }
 
     @Test
