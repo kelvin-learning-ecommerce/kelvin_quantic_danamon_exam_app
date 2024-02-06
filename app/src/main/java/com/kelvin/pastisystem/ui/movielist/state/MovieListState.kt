@@ -28,7 +28,7 @@ data class MovieListState(
     )
 
 @Composable
-fun BoxScope.CoinsScreenState(
+fun BoxScope.MovieListScreenState(
     viewModel: MovieListViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.collectAsState().value

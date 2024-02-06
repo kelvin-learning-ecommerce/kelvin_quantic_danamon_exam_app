@@ -17,12 +17,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.Card
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -45,8 +45,9 @@ import com.kelvin.pastisystem.ui.common.ScrollButton
 import com.kelvin.pastisystem.ui.common.findActivity
 import com.kelvin.pastisystem.ui.moviedetail.MovieDetailActivity
 import com.kelvin.pastisystem.ui.movielist.MovieListActivity
-import com.kelvin.pastisystem.ui.movielist.state.CoinsScreenState
+import com.kelvin.pastisystem.ui.movielist.state.MovieListScreenState
 import com.kelvin.pastisystem.ui.movielist.viewmodel.MovieListViewModel
+import com.kelvin.pastisystem.utils.smallTextStyle
 
 @ExperimentalComposeUiApi
 @Composable
@@ -76,22 +77,32 @@ fun MovieListScreen() {
     Scaffold(
         scaffoldState = scaffoldState,
         floatingActionButton = {
-            FloatingActionButton(onClick = {
-                val intent = Intent(context, MovieListActivity::class.java)
-                intent.putExtra("id", viewModel.genreId)
-                intent.putExtra("isFavorite", true)
-                context.startActivity(intent)
-            }) {
-                Card(
-                    modifier = Modifier.size(48.dp),
-                    shape = CircleShape,
-                ) {
-                    Image(
-                        painterResource(R.drawable.ic_mlkit),
-                        contentDescription = "",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier.fillMaxSize()
-                    )
+            if (!viewModel.isFavorite) {
+                FloatingActionButton(onClick = {
+                    val intent = Intent(context, MovieListActivity::class.java)
+                    intent.putExtra("id", viewModel.genreId)
+                    intent.putExtra("isFavorite", true)
+                    context.startActivity(intent)
+                }) {
+                    Card(
+                        modifier = Modifier.size(48.dp),
+                    ) {
+                        Column {
+                            Image(
+                                painterResource(R.drawable.ic_love_red),
+                                contentDescription = "",
+                                contentScale = ContentScale.Inside,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .size(20.dp)
+                            )
+                            Text(
+                                text = "Favorite Page",
+                                style = smallTextStyle
+                            )
+                        }
+
+                    }
                 }
             }
         },
@@ -126,8 +137,9 @@ fun MovieListScreen() {
                             lazyListState = lazyListState,
                             data = state.data,
                             onItemFav = {
-                                viewModel.insertMovie(it)
-                            }
+                                viewModel.insertMovie(context, it)
+                            },
+                            isFavoritePage = viewModel.isFavorite
                         )
 
                         InfiniteListHandler(lazyListState = lazyListState) {
@@ -137,7 +149,7 @@ fun MovieListScreen() {
 
                 }
 
-                CoinsScreenState()
+                MovieListScreenState()
             }
 
             if (paginationState.isLoading) {
@@ -167,6 +179,7 @@ fun Content(
     lazyListState: LazyListState = rememberLazyListState(),
     data: List<MovieUIModel>,
     onItemFav: (MovieUIModel) -> Unit,
+    isFavoritePage: Boolean = false
 ) {
     val context = LocalContext.current
 
@@ -187,7 +200,8 @@ fun Content(
                 },
                 onItemFav = {
                     onItemFav(it)
-                }
+                },
+                isFavoritePage = isFavoritePage
             )
         }
     }

@@ -19,4 +19,7 @@ interface MovieDao {
 
     @Delete
     fun delete(user: MovieDaoModel)
+
+    @Query("DELETE FROM moviedaomodel WHERE id = :id")
+    fun deleteByMovieId(id: Int)
 }

@@ -1,8 +1,12 @@
 package com.kelvin.pastisystem.ui.movielist.viewmodel
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kelvin.pastisystem.model.MovieUIModel
+import com.kelvin.pastisystem.model.Results
+import com.kelvin.pastisystem.model.updateIsFavorite
 import com.kelvin.pastisystem.network.Resource
 import com.kelvin.pastisystem.repositories.MovieRepository
 import com.kelvin.pastisystem.repositories.RoomRepository
@@ -48,17 +52,7 @@ class MovieListViewModel @Inject constructor(
                 .collectLatest { result ->
                     when (result) {
                         is Resource.Success -> result.data?.let { data ->
-                            val uiData = data.map {
-                                MovieUIModel(
-                                    title = it.title,
-                                    overview = it.overview,
-                                    releaseDate = it.releaseDate,
-                                    voteAverage = it.voteAverage,
-                                    voteCount = it.voteCount,
-                                    posterPath = it.posterPath
-                                )
-                            }
-                            onRequestSuccess(uiData)
+                            successGetMovieList(data)
                         }
 
                         is Resource.Error -> onRequestError(result.message)
@@ -68,12 +62,46 @@ class MovieListViewModel @Inject constructor(
         }
     }
 
+    private fun successGetMovieList(data: List<Results>) {
+        val roomData = roomRepository.getAll().toMutableList()
+
+        val uiData = mutableListOf<MovieUIModel>()
+
+        data.forEach {
+            var isFav = false
+            if (roomData.isNotEmpty()) {
+                val found = roomData.indexOfFirst { dao ->
+                    dao.id == it.id
+                }
+                if (found >= 0) {
+                    isFav = true
+                    roomData.removeAt(found)
+                }
+            }
+            uiData.add(
+                MovieUIModel(
+                    id = it.id,
+                    title = it.title,
+                    overview = it.overview,
+                    releaseDate = it.releaseDate,
+                    voteAverage = it.voteAverage,
+                    voteCount = it.voteCount,
+                    posterPath = it.posterPath,
+                    isFavorite = isFav
+                )
+            )
+        }
+
+        onRequestSuccess(uiData)
+    }
+
     fun getRoomMovieList() {
         viewModelScope.launch(Dispatchers.IO) {
             val data = roomRepository.getAll()
 
             val uiData = data.map {
                 MovieUIModel(
+                    id = it.id,
                     title = it.title,
                     overview = it.overview,
                     releaseDate = it.releaseDate,
@@ -87,21 +115,52 @@ class MovieListViewModel @Inject constructor(
         }
     }
 
-    fun insertMovie(movieData: MovieUIModel) {
-        roomRepository.insertMovie(
-            MovieDaoModel(
-                title = movieData.title,
-                overview = movieData.overview,
-                releaseDate = movieData.releaseDate,
-//                voteAverage = Integer.parseInt(movieData.voteAverage),
-                voteCount = movieData.voteCount,
-                posterPath = movieData.posterPath
-            )
+    fun insertMovie(context: Context, movieData: MovieUIModel) {
+        val daoModel = MovieDaoModel(
+            id = movieData.id,
+            title = movieData.title,
+            overview = movieData.overview,
+            releaseDate = movieData.releaseDate,
+            voteAverage = movieData.voteAverage.toString(),
+            voteCount = movieData.voteCount,
+            posterPath = movieData.posterPath
         )
+        if (movieData.isFavorite) {
+            daoModel.id?.let {
+                roomRepository.deleteByMovieId(
+                    it
+                )
+            }
+        } else {
+            roomRepository.insertMovie(
+                daoModel
+            )
+        }
+
+        Toast.makeText(
+            context,
+            if (movieData.isFavorite) "Success Remove from Favorite list" else "Success Add to Favorite list",
+            Toast.LENGTH_SHORT
+        ).show()
+
+        val list = _state.value.data.toList()
+
+        val uiData = list.updateIsFavorite(movieData.id ?: 0, !movieData.isFavorite)
+
+        updateState(
+            isLoading = false,
+            movie = uiData,
+        )
+
+        _paginationState.update {
+            it.copy(
+                isLoading = false
+            )
+        }
     }
 
     fun getCoinsPaginated() {
-        if(!isFavorite) {
+        if (!isFavorite) {
             if (_state.value.data.isEmpty()) {
                 return
             }
@@ -124,10 +183,12 @@ class MovieListViewModel @Inject constructor(
             )
         }
 
-        _paginationState.update {
-            it.copy(
-                isLoading = false
-            )
+        if (!isFavorite) {
+            _paginationState.update {
+                it.copy(
+                    isLoading = false
+                )
+            }
         }
     }
 

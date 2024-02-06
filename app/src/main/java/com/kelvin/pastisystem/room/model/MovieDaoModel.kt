@@ -12,6 +12,6 @@ data class MovieDaoModel(
     @ColumnInfo("poster_path") var posterPath: String? = null,
     @ColumnInfo("release_date") var releaseDate: String? = null,
     @ColumnInfo("title") var title: String? = null,
-    @ColumnInfo("vote_average") var voteAverage: Int? = null,
+    @ColumnInfo("vote_average") var voteAverage: String? = null,
     @ColumnInfo("vote_count") var voteCount: Int? = null
 )

@@ -9,6 +9,8 @@ interface RoomRepository {
     fun loadAllByIds(userIds: IntArray): List<MovieDaoModel>
     fun insertMovie(vararg movie: MovieDaoModel)
     fun delete(user: MovieDaoModel)
+    fun deleteByMovieId(id: Int)
+
 
 }
 class RoomRepositoryImpl @Inject constructor(private val appDatabase: AppDatabase): RoomRepository {
@@ -29,5 +31,9 @@ class RoomRepositoryImpl @Inject constructor(private val appDatabase: AppDatabas
     override fun delete(user: MovieDaoModel) {
         return appDatabase.movieDao().delete(user)
 
+    }
+
+    override fun deleteByMovieId(id: Int) {
+        return appDatabase.movieDao().deleteByMovieId(id)
     }
 }

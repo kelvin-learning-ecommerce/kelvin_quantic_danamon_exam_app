@@ -8,4 +8,8 @@ data class MovieUIModel(
     var voteAverage: Any? = null,
     var voteCount: Int? = null,
     var posterPath: String? = null,
+    var isFavorite: Boolean = false
 )
+
+fun List<MovieUIModel>.updateIsFavorite(id: Int, isFav: Boolean): List<MovieUIModel> =
+    this.map { worker -> if (worker.id == id) worker.copy(isFavorite = isFav) else worker }

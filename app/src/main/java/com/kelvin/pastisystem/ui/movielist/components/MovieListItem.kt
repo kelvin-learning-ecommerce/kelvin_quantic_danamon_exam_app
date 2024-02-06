@@ -1,6 +1,7 @@
 package com.kelvin.pastisystem.ui.movielist.components
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -12,10 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.LibraryAdd
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
@@ -24,9 +22,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.kelvin.pastisystem.R
 import com.kelvin.pastisystem.model.MovieUIModel
 import com.kelvin.pastisystem.utils.bigTextStyle
 import com.kelvin.pastisystem.utils.mediumTextStyle
@@ -38,6 +38,7 @@ fun MovieListItem(
     data: MovieUIModel,
     onItemClick: (MovieUIModel) -> Unit,
     onItemFav: (MovieUIModel) -> Unit,
+    isFavoritePage: Boolean
 ) {
     Card(
         elevation = CardDefaults.cardElevation(),
@@ -78,18 +79,20 @@ fun MovieListItem(
                         .size(150.dp)
                         .align(Alignment.Center)
                 )
+                if (!isFavoritePage) {
+                    Image(painter = painterResource(
+                        if (!data.isFavorite) {R.drawable.ic_love}
+                        else {R.drawable.ic_love_red}
+                    ), "Favorite icon",
+                        modifier = Modifier
+                            .clickable {
+                                onItemFav(data)
+                            }
+                            .align(Alignment.TopEnd)
+                            .padding(15.dp)
+                            .size(30.dp))
+                }
 
-                Icon(
-                    imageVector = Icons.Default.LibraryAdd,
-                    contentDescription = "Add to Library",
-                    modifier = Modifier
-                        .clickable {
-                            onItemFav(data)
-                        }
-                        .align(Alignment.TopEnd)
-                        .padding(15.dp)
-
-                )
             }
             Text(
                 text = data.title ?: "",
