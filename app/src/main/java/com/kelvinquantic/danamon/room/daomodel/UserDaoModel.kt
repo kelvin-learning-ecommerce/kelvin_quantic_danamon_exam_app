@@ -1,4 +1,4 @@
-package com.kelvinquantic.danamon.room.model
+package com.kelvinquantic.danamon.room.daomodel
 
 import android.os.Parcel
 import android.os.Parcelable

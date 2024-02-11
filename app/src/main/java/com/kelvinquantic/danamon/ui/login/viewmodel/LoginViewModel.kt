@@ -3,8 +3,8 @@ package com.kelvinquantic.danamon.ui.login.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kelvinquantic.danamon.repositories.RoomRepository
-import com.kelvinquantic.danamon.room.model.SessionDaoModel
-import com.kelvinquantic.danamon.room.model.UserDaoModel
+import com.kelvinquantic.danamon.room.daomodel.SessionDaoModel
+import com.kelvinquantic.danamon.room.daomodel.UserDaoModel
 import com.kelvinquantic.danamon.ui.common.isValidEmail
 import com.kelvinquantic.danamon.ui.login.state.LoginState
 import dagger.hilt.android.lifecycle.HiltViewModel

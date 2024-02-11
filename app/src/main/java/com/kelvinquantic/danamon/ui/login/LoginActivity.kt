@@ -33,7 +33,7 @@ import com.kelvinquantic.danamon.ui.common.freshStartActivity
 import com.kelvinquantic.danamon.ui.login.viewmodel.LoginViewModel
 import com.kelvinquantic.danamon.ui.photolist.HomeActivity
 import com.kelvinquantic.danamon.ui.register.RegisterActivity
-import com.kelvinquantic.danamon.ui.theme.LearningTheme
+import com.kelvinquantic.danamon.ui.theme.DanamonAppTheme
 import com.kelvinquantic.danamon.utils.bigTextStyle
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -43,7 +43,7 @@ class LoginActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            LearningTheme {
+            DanamonAppTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = Color.White
@@ -110,7 +110,7 @@ fun LoginPageScreen(vm: LoginViewModel = hiltViewModel()) {
 @Preview(showBackground = true)
 @Composable
 fun HomePagePreview() {
-    LearningTheme {
+    DanamonAppTheme {
         Surface {
             LoginPageScreen()
         }

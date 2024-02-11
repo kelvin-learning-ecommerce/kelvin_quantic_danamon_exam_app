@@ -3,9 +3,9 @@ package com.kelvinquantic.danamon.room
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.kelvinquantic.danamon.room.model.FavoriteDaoModel
-import com.kelvinquantic.danamon.room.model.SessionDaoModel
-import com.kelvinquantic.danamon.room.model.UserDaoModel
+import com.kelvinquantic.danamon.room.daomodel.FavoriteDaoModel
+import com.kelvinquantic.danamon.room.daomodel.SessionDaoModel
+import com.kelvinquantic.danamon.room.daomodel.UserDaoModel
 
 @Dao
 interface DaoService {

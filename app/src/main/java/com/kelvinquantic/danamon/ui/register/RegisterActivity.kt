@@ -39,14 +39,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.kelvinquantic.danamon.room.model.UserDaoModel
+import com.kelvinquantic.danamon.room.daomodel.UserDaoModel
 import com.kelvinquantic.danamon.ui.common.LargeDropdownMenu
 import com.kelvinquantic.danamon.ui.common.LoginTextField
 import com.kelvinquantic.danamon.ui.common.findActivity
 import com.kelvinquantic.danamon.ui.common.finish
 import com.kelvinquantic.danamon.ui.register.viewmodel.RegisterViewModel
 import com.kelvinquantic.danamon.ui.register.viewmodel.Role
-import com.kelvinquantic.danamon.ui.theme.LearningTheme
+import com.kelvinquantic.danamon.ui.theme.DanamonAppTheme
 import com.kelvinquantic.danamon.utils.bigTextStyle
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -56,7 +56,7 @@ class RegisterActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            LearningTheme {
+            DanamonAppTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = Color.White
@@ -205,7 +205,7 @@ fun RegisterPageScreen(vm: RegisterViewModel = hiltViewModel()) {
 @Preview(showBackground = true)
 @Composable
 fun HomePagePreview() {
-    LearningTheme {
+    DanamonAppTheme {
         Surface {
             RegisterPageScreen()
         }

@@ -1,4 +1,4 @@
-package com.kelvinquantic.danamon.room.model
+package com.kelvinquantic.danamon.room.daomodel
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

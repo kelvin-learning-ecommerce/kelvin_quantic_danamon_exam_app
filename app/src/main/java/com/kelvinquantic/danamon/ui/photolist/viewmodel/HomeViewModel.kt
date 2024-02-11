@@ -10,9 +10,9 @@ import com.kelvinquantic.danamon.model.updateIsFavorite
 import com.kelvinquantic.danamon.network.Resource
 import com.kelvinquantic.danamon.repositories.ApiRepository
 import com.kelvinquantic.danamon.repositories.RoomRepository
-import com.kelvinquantic.danamon.room.model.FavoriteDaoModel
-import com.kelvinquantic.danamon.room.model.SessionDaoModel
-import com.kelvinquantic.danamon.room.model.UserDaoModel
+import com.kelvinquantic.danamon.room.daomodel.FavoriteDaoModel
+import com.kelvinquantic.danamon.room.daomodel.SessionDaoModel
+import com.kelvinquantic.danamon.room.daomodel.UserDaoModel
 import com.kelvinquantic.danamon.ui.photolist.components.PaginationState
 import com.kelvinquantic.danamon.ui.photolist.state.HomeState
 import com.kelvinquantic.danamon.ui.register.viewmodel.Role

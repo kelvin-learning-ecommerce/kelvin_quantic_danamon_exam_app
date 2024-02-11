@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.kelvinquantic.danamon.model.PhotoUIModel
 import com.kelvinquantic.danamon.ui.photolist.components.Content
 import com.kelvinquantic.danamon.ui.photolist.components.HomeScreen
-import com.kelvinquantic.danamon.ui.theme.LearningTheme
+import com.kelvinquantic.danamon.ui.theme.DanamonAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,7 +23,7 @@ class HomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            LearningTheme {
+            DanamonAppTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -38,7 +38,7 @@ class HomeActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun MovieListScreenPreview() {
-    LearningTheme {
+    DanamonAppTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background

@@ -1,9 +1,9 @@
 package com.kelvinquantic.danamon.repositories
 
 import com.kelvinquantic.danamon.room.AppDatabase
-import com.kelvinquantic.danamon.room.model.FavoriteDaoModel
-import com.kelvinquantic.danamon.room.model.SessionDaoModel
-import com.kelvinquantic.danamon.room.model.UserDaoModel
+import com.kelvinquantic.danamon.room.daomodel.FavoriteDaoModel
+import com.kelvinquantic.danamon.room.daomodel.SessionDaoModel
+import com.kelvinquantic.danamon.room.daomodel.UserDaoModel
 import javax.inject.Inject
 
 interface RoomRepository {

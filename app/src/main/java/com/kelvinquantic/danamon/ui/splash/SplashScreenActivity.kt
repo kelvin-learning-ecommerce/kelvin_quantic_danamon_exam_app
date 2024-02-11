@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.kelvinquantic.danamon.R
 import com.kelvinquantic.danamon.ui.login.LoginPageScreen
-import com.kelvinquantic.danamon.ui.theme.LearningTheme
+import com.kelvinquantic.danamon.ui.theme.DanamonAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("CustomSplashScreen")
@@ -44,7 +44,7 @@ fun SplashScreenScreen(
 
     vm.isUserLogin(LocalContext.current)
 
-    LearningTheme {
+    DanamonAppTheme {
         // A surface container using the 'background' color from the theme
         Surface(
             modifier = Modifier.fillMaxSize(),
@@ -66,7 +66,7 @@ fun SplashScreenScreen(
 @Preview(showBackground = true)
 @Composable
 fun HomePagePreview() {
-    LearningTheme {
+    DanamonAppTheme {
         LoginPageScreen()
     }
 }
