@@ -38,6 +38,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
+import com.kelvinquantic.danamon.ui.confirmpassword.ConfirmPasswordActivity
 import com.kelvinquantic.danamon.ui.photolist.viewmodel.HomeViewModel
 import com.kelvinquantic.danamon.ui.register.RegisterActivity
 import com.kelvinquantic.danamon.utils.bigTextStyle
@@ -130,7 +131,6 @@ fun UserListContent(vm: HomeViewModel = hiltViewModel()) {
                                                 val i = Intent(ctx, RegisterActivity::class.java)
                                                 i.putExtra("isEdit", true)
                                                 i.putExtra("data", userState.value[it])
-//                                                    vm.userSessionData)
                                                 ctx.startActivity(i)
                                             },
                                         tint = Color.Gray
@@ -140,7 +140,11 @@ fun UserListContent(vm: HomeViewModel = hiltViewModel()) {
                                         "Delete Profile",
                                         Modifier
                                             .size(25.dp)
-                                            .clickable { },
+                                            .clickable {
+                                                val i = Intent(ctx, ConfirmPasswordActivity::class.java)
+                                                i.putExtra("data", userState.value[it])
+                                                ctx.startActivity(i)
+                                            },
                                         tint = Color.Gray
 
                                     )

@@ -108,18 +108,4 @@ class RegisterViewModel @Inject constructor(
             )
         }
     }
-
-    fun updateState(
-        isSuccess: Boolean = false,
-        error: String = ""
-    ) {
-        _state.update {
-            it.copy(
-                isSuccess = isSuccess,
-                usernameError = error,
-                emailError = error,
-                passError = error,
-            )
-        }
-    }
 }

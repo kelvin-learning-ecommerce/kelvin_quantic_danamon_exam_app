@@ -17,6 +17,8 @@ interface DaoService {
 
     @Query("DELETE FROM SessionDaoModel WHERE username = :username")
     fun deleteLoginData(username: String)
+    @Query("DELETE FROM UserDaoModel WHERE username = :username")
+    fun deleteUserData(username: String)
 
     @Query("SELECT * FROM favoritedaomodel")
     fun getAllPhoto(): List<FavoriteDaoModel>

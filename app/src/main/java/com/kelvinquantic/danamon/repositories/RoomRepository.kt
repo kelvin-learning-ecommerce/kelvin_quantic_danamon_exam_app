@@ -10,6 +10,7 @@ interface RoomRepository {
     fun insertLoginData(data: SessionDaoModel)
     fun getLoginData(): List<SessionDaoModel>
     fun deleteLoginData(username: String)
+    fun deleteUser(username: String)
 
     fun getAllPhoto(): List<FavoriteDaoModel>
     fun findUserByEmail(email: String): List<UserDaoModel>
@@ -45,6 +46,11 @@ class RoomRepositoryImpl @Inject constructor(private val appDatabase: AppDatabas
 
     override fun deleteLoginData(username: String) {
         return appDatabase.movieDao().deleteLoginData(username)
+
+    }
+
+    override fun deleteUser(username: String) {
+        return appDatabase.movieDao().deleteUserData(username)
 
     }
 

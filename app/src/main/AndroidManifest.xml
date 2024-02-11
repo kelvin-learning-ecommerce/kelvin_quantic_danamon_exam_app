@@ -37,6 +37,9 @@
             android:exported="true"
             android:theme="@style/Theme.PastiSystemTest" />
         <activity android:name="com.kelvinquantic.danamon.ui.register.RegisterActivity" />
+        <activity
+            android:name="com.kelvinquantic.danamon.ui.confirmpassword.ConfirmPasswordActivity"
+            android:exported="true" />
 
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
