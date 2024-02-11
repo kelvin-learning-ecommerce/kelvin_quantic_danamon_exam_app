@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             app:scaleType="fillCenter" />
 
-        <com.kelvin.pastisystem.ui.mlkit.camerax.GraphicOverlay
+        <com.kelvinquantic.danamon.ui.mlkit.camerax.GraphicOverlay
             android:id="@+id/graphicOverlay_finder"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.kelvin.pastisystem"
+    namespace = "com.kelvinquantic.danamon"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.kelvin.pastisystem"
+        applicationId = "com.kelvinquantic.danamon"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -130,7 +130,6 @@ dependencies {
 
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
-//    ksp("androidx.room:room-compiler:$room_version")
     kapt("android.arch.persistence.room:compiler:1.1.1")
 
     testImplementation("androidx.room:room-testing:$room_version")
