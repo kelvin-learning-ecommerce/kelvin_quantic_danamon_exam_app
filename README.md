@@ -17,26 +17,26 @@ Here is the folder structure we have been using in this project
 
 https://kelvinprayitno94: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@github.com/99groupcodingchallenge/99group-flutter-coding-challenge.git
 lib/
-|- api/
-|- di/
-|- Model/
-|- network/
-|- repositories/
-|- room/
-    - daomodel
-|- ui/
-    - common
-    - confirmpassword
-    - login
-    - photolist
-    - register
-    - splash
-    - theme
-|- utils/
+* api/
+* di/
+* Model/
+* network/
+* repositories/
+* room/
+    * daomodel
+* ui/
+    * common
+    * confirmpassword
+    * login
+    * photolist
+    * register
+    * splash
+    * theme
+* utils/
 
 Now, lets dive into the lib folder which has the main code for the application.
 
-1- api - Contain API Service used by the app.
+1- api - Contain API Service used by the app.\n
 2- DI - Contains dependency config for retrofit & room module.
 3- Model - Contain kotlin file used for raw response from API decoded to data class .
 4- repositories — Contain repositories class injected API Service class for view models.
