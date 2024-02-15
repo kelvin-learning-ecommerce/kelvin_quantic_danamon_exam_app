@@ -2,6 +2,8 @@ package com.kelvinquantic.danamon.ui.login.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kelvinquantic.danamon.navigation.AppNavigator
+import com.kelvinquantic.danamon.navigation.Destination
 import com.kelvinquantic.danamon.repositories.RoomRepository
 import com.kelvinquantic.danamon.room.daomodel.SessionDaoModel
 import com.kelvinquantic.danamon.room.daomodel.UserDaoModel
@@ -17,7 +19,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val roomRepository: RoomRepository
+    private val roomRepository: RoomRepository,
+    private val appNavigator: AppNavigator
 ) : ViewModel() {
     private val _state = MutableStateFlow(LoginState())
     val loginState: StateFlow<LoginState> get() = _state
@@ -66,6 +69,12 @@ class LoginViewModel @Inject constructor(
             }
         }
         return Pair(isEmail, isError)
+    }
+
+    fun openRegister() {
+        appNavigator.tryNavigateTo(
+            Destination.RegisterScreen()
+        )
     }
 
     internal fun onRequestSuccess(res: UserDaoModel) {

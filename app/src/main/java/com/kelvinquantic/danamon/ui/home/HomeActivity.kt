@@ -1,4 +1,4 @@
-package com.kelvinquantic.danamon.ui.photolist
+package com.kelvinquantic.danamon.ui.home
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,8 +11,8 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.kelvinquantic.danamon.model.PhotoUIModel
-import com.kelvinquantic.danamon.ui.photolist.components.Content
-import com.kelvinquantic.danamon.ui.photolist.components.HomeScreen
+import com.kelvinquantic.danamon.ui.home.components.Content
+import com.kelvinquantic.danamon.ui.home.components.HomeScreen
 import com.kelvinquantic.danamon.ui.theme.DanamonAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 

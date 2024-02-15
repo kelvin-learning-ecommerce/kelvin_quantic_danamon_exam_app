@@ -1,6 +1,5 @@
 package com.kelvinquantic.danamon.ui.login
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -30,9 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.kelvinquantic.danamon.ui.common.LoginTextField
 import com.kelvinquantic.danamon.ui.common.freshStartActivity
+import com.kelvinquantic.danamon.ui.home.HomeActivity
 import com.kelvinquantic.danamon.ui.login.viewmodel.LoginViewModel
-import com.kelvinquantic.danamon.ui.photolist.HomeActivity
-import com.kelvinquantic.danamon.ui.register.RegisterActivity
 import com.kelvinquantic.danamon.ui.theme.DanamonAppTheme
 import com.kelvinquantic.danamon.utils.bigTextStyle
 import dagger.hilt.android.AndroidEntryPoint
@@ -64,7 +62,7 @@ fun LoginPageScreen(vm: LoginViewModel = hiltViewModel()) {
     var usernameText by remember { mutableStateOf(TextFieldValue("")) }
     var passwordText by remember { mutableStateOf(TextFieldValue("")) }
 
-    if(state.value.isSuccess){
+    if (state.value.isSuccess) {
         ctx.freshStartActivity(HomeActivity::class.java)
     }
 
@@ -98,7 +96,7 @@ fun LoginPageScreen(vm: LoginViewModel = hiltViewModel()) {
             }
             Spacer(modifier = Modifier.height(20.dp))
             Button(onClick = {
-                ctx.startActivity(Intent(ctx, RegisterActivity::class.java))
+                vm.openRegister()
             }) {
                 Text(text = "Register", style = bigTextStyle, textAlign = TextAlign.Center)
             }

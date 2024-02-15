@@ -29,16 +29,14 @@ class SplashScreenActivity : ComponentActivity() {
 
 
         setContent {
-            SplashScreenScreen(
-
-            )
+            SplashScreen()
         }
     }
 }
 
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
-fun SplashScreenScreen(
+fun SplashScreen(
     vm: SplashViewModel = hiltViewModel()
 ) {
 

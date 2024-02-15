@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kelvinquantic.danamon.repositories.RoomRepository
 import com.kelvinquantic.danamon.ui.common.freshStartActivity
+import com.kelvinquantic.danamon.ui.home.HomeActivity
 import com.kelvinquantic.danamon.ui.login.LoginActivity
-import com.kelvinquantic.danamon.ui.photolist.HomeActivity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

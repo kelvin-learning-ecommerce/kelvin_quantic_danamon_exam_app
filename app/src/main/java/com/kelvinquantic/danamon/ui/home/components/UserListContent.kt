@@ -1,4 +1,4 @@
-package com.kelvinquantic.danamon.ui.photolist.components
+package com.kelvinquantic.danamon.ui.home.components
 
 import android.content.Intent
 import androidx.compose.foundation.BorderStroke
@@ -39,7 +39,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import com.kelvinquantic.danamon.ui.confirmpassword.ConfirmPasswordActivity
-import com.kelvinquantic.danamon.ui.photolist.viewmodel.HomeViewModel
+import com.kelvinquantic.danamon.ui.home.viewmodel.HomeViewModel
 import com.kelvinquantic.danamon.ui.register.RegisterActivity
 import com.kelvinquantic.danamon.utils.bigTextStyle
 import com.kelvinquantic.danamon.utils.mediumTextStyle

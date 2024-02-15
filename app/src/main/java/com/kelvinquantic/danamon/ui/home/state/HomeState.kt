@@ -1,4 +1,4 @@
-package com.kelvinquantic.danamon.ui.photolist.state
+package com.kelvinquantic.danamon.ui.home.state
 
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.PaddingValues
@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.kelvinquantic.danamon.model.PhotoUIModel
 import com.kelvinquantic.danamon.ui.common.ShimmerListItem
-import com.kelvinquantic.danamon.ui.photolist.viewmodel.HomeViewModel
+import com.kelvinquantic.danamon.ui.home.viewmodel.HomeViewModel
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 

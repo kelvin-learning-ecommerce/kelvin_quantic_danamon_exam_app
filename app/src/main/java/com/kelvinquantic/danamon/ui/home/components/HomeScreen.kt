@@ -1,4 +1,4 @@
-package com.kelvinquantic.danamon.ui.photolist.components
+package com.kelvinquantic.danamon.ui.home.components
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -53,9 +53,9 @@ import com.kelvinquantic.danamon.ui.common.ScrollButton
 import com.kelvinquantic.danamon.ui.common.findActivity
 import com.kelvinquantic.danamon.ui.common.freshStartActivity
 import com.kelvinquantic.danamon.ui.login.LoginActivity
-import com.kelvinquantic.danamon.ui.photolist.HomeActivity
-import com.kelvinquantic.danamon.ui.photolist.state.HomeScreenState
-import com.kelvinquantic.danamon.ui.photolist.viewmodel.HomeViewModel
+import com.kelvinquantic.danamon.ui.home.HomeActivity
+import com.kelvinquantic.danamon.ui.home.state.HomeScreenState
+import com.kelvinquantic.danamon.ui.home.viewmodel.HomeViewModel
 import com.kelvinquantic.danamon.ui.register.viewmodel.Role
 import com.kelvinquantic.danamon.utils.bigTextStyle
 import com.kelvinquantic.danamon.utils.smallTextStyle

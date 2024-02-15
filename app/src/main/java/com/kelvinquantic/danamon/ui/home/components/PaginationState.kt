@@ -1,4 +1,4 @@
-package com.kelvinquantic.danamon.ui.photolist.components
+package com.kelvinquantic.danamon.ui.home.components
 
 data class PaginationState(
     val isLoading: Boolean = false,

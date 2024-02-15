@@ -1,4 +1,4 @@
-package com.kelvinquantic.danamon.ui.photolist.viewmodel
+package com.kelvinquantic.danamon.ui.home.viewmodel
 
 import android.content.Context
 import android.widget.Toast
@@ -13,8 +13,8 @@ import com.kelvinquantic.danamon.repositories.RoomRepository
 import com.kelvinquantic.danamon.room.daomodel.FavoriteDaoModel
 import com.kelvinquantic.danamon.room.daomodel.SessionDaoModel
 import com.kelvinquantic.danamon.room.daomodel.UserDaoModel
-import com.kelvinquantic.danamon.ui.photolist.components.PaginationState
-import com.kelvinquantic.danamon.ui.photolist.state.HomeState
+import com.kelvinquantic.danamon.ui.home.components.PaginationState
+import com.kelvinquantic.danamon.ui.home.state.HomeState
 import com.kelvinquantic.danamon.ui.register.viewmodel.Role
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.persistentListOf

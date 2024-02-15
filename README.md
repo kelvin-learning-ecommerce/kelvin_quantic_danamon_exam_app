@@ -15,6 +15,7 @@ Here is the core folder structure which flutter provides.
 
 Here is the folder structure we have been using in this project
 
+https://kelvinprayitno94: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@github.com/99groupcodingchallenge/99group-flutter-coding-challenge.git
 lib/
 |- api/
 |- di/

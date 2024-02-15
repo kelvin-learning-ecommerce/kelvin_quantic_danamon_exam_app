@@ -6,7 +6,7 @@ import com.kelvin.pastisystem.home.MovieMockData.Companion.listOfPhotos
 import com.kelvin.pastisystem.home.MovieMockData.Companion.photo
 import com.kelvinquantic.danamon.repositories.ApiRepository
 import com.kelvinquantic.danamon.repositories.RoomRepository
-import com.kelvinquantic.danamon.ui.photolist.viewmodel.HomeViewModel
+import com.kelvinquantic.danamon.ui.home.viewmodel.HomeViewModel
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest

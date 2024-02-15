@@ -30,7 +30,7 @@
             android:name=".ui.login.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.photolist.HomeActivity"
+            android:name=".ui.home.HomeActivity"
             android:exported="true" />
         <activity android:name="com.kelvinquantic.danamon.ui.register.RegisterActivity" />
         <activity

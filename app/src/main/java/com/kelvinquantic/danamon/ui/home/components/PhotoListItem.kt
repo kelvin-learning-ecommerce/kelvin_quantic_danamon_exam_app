@@ -1,4 +1,4 @@
-package com.kelvinquantic.danamon.ui.photolist.components
+package com.kelvinquantic.danamon.ui.home.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
