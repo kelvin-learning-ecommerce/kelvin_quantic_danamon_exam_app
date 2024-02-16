@@ -19,6 +19,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner = "com.kelvinquantic.danamon.HiltTestRunner"
     }
 
     buildTypes {
@@ -75,9 +76,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation("androidx.navigation:navigation-compose:$nav_version")
     implementation("androidx.compose.foundation:foundation:1.6.0")
 
@@ -134,6 +133,18 @@ dependencies {
 
     testImplementation("androidx.room:room-testing:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
+
+    //UI Testing
+    androidTestImplementation ("androidx.compose.ui:ui-test:1.6.0")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.6.0")
+//    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:$1.6.0")
+//    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation("androidx.test.ext:junit-ktx:1.1.5")
+    androidTestImplementation ("androidx.navigation:navigation-testing:2.7.7")
+    androidTestImplementation ("com.google.dagger:hilt-android-testing:2.44.2")
+    kaptTest ("com.google.dagger:hilt-android-compiler:2.48.1")
+    kaptAndroidTest ("com.google.dagger:hilt-android-compiler:2.48.1")
 }
 
 kapt {

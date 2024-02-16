@@ -54,10 +54,11 @@ class LoginActivity : ComponentActivity() {
 }
 
 @Composable
-fun LoginPageScreen(vm: LoginViewModel = hiltViewModel()) {
+fun LoginPageScreen() {
+    val vm: LoginViewModel = hiltViewModel()
     val state = vm.loginState.collectAsState()
 
-    var ctx = LocalContext.current
+    val ctx = LocalContext.current
 
     var usernameText by remember { mutableStateOf(TextFieldValue("")) }
     var passwordText by remember { mutableStateOf(TextFieldValue("")) }
